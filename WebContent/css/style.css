@@ -283,6 +283,15 @@ img {
 	color: #6b7280;
 }
 
+.price-with-iva {
+	font-size: 1.1rem;
+	color: #dc2626;
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	background: #fef2f2;
+	border-radius: 4px;
+}
+
 /* === PRODUCT DETAIL === */
 .product-detail {
 	display: grid;

@@ -18,6 +18,7 @@
 				</h3>
 				<p class="price">&euro; ${p.prezzo}</p>
 				<p class="iva">IVA ${p.iva}%</p>
+				<p class="price-with-iva"><strong>Totale: &euro; ${p.getPrezzoConIva()}</strong></p>
 				<form action="${pageContext.request.contextPath}/carrello/aggiungi"
 					method="post">
 					<input type="hidden" name="prodottoId" value="${p.id}"> <input

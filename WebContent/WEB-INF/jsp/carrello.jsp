@@ -17,6 +17,8 @@
 				<tr>
 					<th>Prodotto</th>
 					<th>Prezzo</th>
+					<th>IVA</th>
+					<th>Totale</th>
 					<th>Quantità</th>
 					<th>Subtotale</th>
 					<th></th>
@@ -28,6 +30,8 @@
 					<tr>
 						<td data-label="Prodotto">${item.prodotto.nome}</td>
 						<td data-label="Prezzo">&euro; ${item.prodotto.prezzo}</td>
+						<td data-label="IVA">${item.prodotto.iva}%</td>
+						<td data-label="Totale">&euro; ${item.prodotto.getPrezzoConIva()}</td>
 						<td data-label="Quantità">
 							<form
 								action="${pageContext.request.contextPath}/carrello/aggiorna"
@@ -39,7 +43,7 @@
 								<button type="submit" class="btn btn-sm">Aggiorna</button>
 							</form>
 						</td>
-						<td data-label="Subtotale">&euro; ${item.prodotto.prezzo * item.quantita}</td>
+						<td data-label="Subtotale">&euro; ${item.prodotto.getPrezzoConIva() * item.quantita}</td>
 						<td>
 							<form
 								action="${pageContext.request.contextPath}/carrello/rimuovi"

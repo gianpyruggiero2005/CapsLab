@@ -14,6 +14,7 @@
 		<p class="description">${prodotto.descrizione}</p>
 		<p class="price">&euro; ${prodotto.prezzo}</p>
 		<p class="iva">IVA: ${prodotto.iva}%</p>
+		<p class="price-with-iva"><strong>Totale: &euro; ${prodotto.getPrezzoConIva()}</strong></p>
 		<p class="stock">Disponibilità: ${prodotto.quantitaDisponibile}
 			pezzi</p>
 		<form action="${pageContext.request.contextPath}/carrello/aggiungi"
