@@ -24,17 +24,29 @@ public class OrdineDAO {
             }
 
             String sqlRiga = "INSERT INTO riga_ordine (ordine_id, prodotto_id, nome_prodotto, prezzo_unitario, iva, quantita) VALUES (?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement ps = con.prepareStatement(sqlRiga)) {
+            String sqlUpdateQta = "UPDATE prodotto SET quantita_disponibile = quantita_disponibile - ? WHERE id = ?";
+
+            try (PreparedStatement psRiga = con.prepareStatement(sqlRiga);
+                 PreparedStatement psUpdate = con.prepareStatement(sqlUpdateQta)) {
+                
                 for (RigaOrdine r : righe) {
-                    ps.setInt(1, ordine.getId());
-                    ps.setInt(2, r.getProdottoId());
-                    ps.setString(3, r.getNomeProdotto());
-                    ps.setBigDecimal(4, r.getPrezzoUnitario());
-                    ps.setBigDecimal(5, r.getIva());
-                    ps.setInt(6, r.getQuantita());
-                    ps.addBatch();
+                    // Inserisci riga ordine
+                    psRiga.setInt(1, ordine.getId());
+                    psRiga.setInt(2, r.getProdottoId());
+                    psRiga.setString(3, r.getNomeProdotto());
+                    psRiga.setBigDecimal(4, r.getPrezzoUnitario());
+                    psRiga.setBigDecimal(5, r.getIva());
+                    psRiga.setInt(6, r.getQuantita());
+                    psRiga.addBatch();
+                    
+                    // Decrementa quantità disponibile del prodotto
+                    psUpdate.setInt(1, r.getQuantita());
+                    psUpdate.setInt(2, r.getProdottoId());
+                    psUpdate.addBatch();
                 }
-                ps.executeBatch();
+                
+                psRiga.executeBatch();
+                psUpdate.executeBatch();
             }
 
             con.commit();

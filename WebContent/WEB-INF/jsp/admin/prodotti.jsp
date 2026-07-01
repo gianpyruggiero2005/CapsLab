@@ -3,6 +3,11 @@
 		name="titolo" value="Admin - Prodotti" /></jsp:include>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
+<div class="admin-nav">
+	<a href="${pageContext.request.contextPath}/admin/prodotti" class="btn btn-admin active">Prodotti</a>
+	<a href="${pageContext.request.contextPath}/admin/ordini" class="btn btn-admin">Ordini</a>
+</div>
+
 <h1>Gestione Prodotti</h1>
 <a href="${pageContext.request.contextPath}/admin/prodotti/nuovo"
 	class="btn btn-primary">Nuovo Prodotto</a>

@@ -4,6 +4,11 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 
+<div class="admin-nav">
+	<a href="${pageContext.request.contextPath}/admin/prodotti" class="btn btn-admin">Prodotti</a>
+	<a href="${pageContext.request.contextPath}/admin/ordini" class="btn btn-admin active">Ordini</a>
+</div>
+
 <h1>Gestione Ordini</h1>
 
 <div class="filters">
