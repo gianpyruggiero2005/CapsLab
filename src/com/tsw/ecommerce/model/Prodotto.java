@@ -31,6 +31,6 @@ public class Prodotto implements Serializable {
     public void setAttivo(boolean attivo) { this.attivo = attivo; }
 
     public BigDecimal getPrezzoConIva() {
-        return prezzo.add(prezzo.multiply(iva).divide(BigDecimal.valueOf(100)));
+        return prezzo.add(prezzo.multiply(iva).divide(BigDecimal.valueOf(100))).setScale(2, java.math.RoundingMode.HALF_UP);
     }
 }

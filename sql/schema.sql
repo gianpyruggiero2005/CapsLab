@@ -57,7 +57,7 @@ CREATE TABLE riga_ordine (
 
 -- Admin di default (password: admin123)
 INSERT INTO utente (nome, cognome, email, password_hash, ruolo)
-VALUES ('Admin', 'CapsLab', 'admin@capslab.it', '$2a$12$5J5mEP2lxZgU.3C3Z4Yuz.CqXwc6N0O299kDOMFqhjqowTWvAgMXS', 'admin');
+VALUES ('Admin', 'CapsLab', 'admin@capslab.it', '7fcf4ba391c48784edde599889d6e3f1e47a27db36ecc050cc92f259bfac38afad2c68a1ae804d77075e8fb722503f3eca2b2c1006ee6f6c7b7628cb45fffd1d', 'admin');
 
 -- Categorie
 INSERT INTO categoria (nome, descrizione) VALUES

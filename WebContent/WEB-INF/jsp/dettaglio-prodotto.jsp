@@ -2,6 +2,7 @@
 <jsp:include page="/WEB-INF/jsp/fragments/header.jsp"><jsp:param
 		name="titolo" value="${prodotto.nome}" /></jsp:include>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 
 <div class="product-detail">
 	<div class="product-detail-img">
@@ -12,9 +13,9 @@
 	<div class="product-detail-info">
 		<h1>${prodotto.nome}</h1>
 		<p class="description">${prodotto.descrizione}</p>
-		<p class="price">&euro; ${prodotto.prezzo}</p>
+		<p class="price">&euro; <fmt:formatNumber value="${prodotto.prezzo}" pattern="0.00" /></p>
 		<p class="iva">IVA: ${prodotto.iva}%</p>
-		<p class="price-with-iva"><strong>Totale: &euro; ${prodotto.getPrezzoConIva()}</strong></p>
+		<p class="price-with-iva"><strong>Totale: &euro; <fmt:formatNumber value="${prodotto.getPrezzoConIva()}" pattern="0.00" /></strong></p>
 		<p class="stock">Disponibilità: ${prodotto.quantitaDisponibile}
 			pezzi</p>
 		<form action="${pageContext.request.contextPath}/carrello/aggiungi"

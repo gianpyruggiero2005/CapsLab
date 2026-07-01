@@ -28,6 +28,7 @@ public class RigaOrdine implements Serializable {
     public void setQuantita(int quantita) { this.quantita = quantita; }
 
     public BigDecimal getSubtotale() {
-        return prezzoUnitario.multiply(BigDecimal.valueOf(quantita));
+        BigDecimal prezzoConIva = prezzoUnitario.add(prezzoUnitario.multiply(iva).divide(BigDecimal.valueOf(100)));
+        return prezzoConIva.multiply(BigDecimal.valueOf(quantita)).setScale(2, java.math.RoundingMode.HALF_UP);
     }
 }

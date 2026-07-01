@@ -2,6 +2,7 @@
 <jsp:include page="/WEB-INF/jsp/fragments/header.jsp"><jsp:param
 		name="titolo" value="Carrello" /></jsp:include>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 
 <h1>Il tuo Carrello</h1>
 <c:choose>
@@ -29,9 +30,9 @@
 					<c:set var="item" value="${entry.value}" />
 					<tr>
 						<td data-label="Prodotto">${item.prodotto.nome}</td>
-						<td data-label="Prezzo">&euro; ${item.prodotto.prezzo}</td>
+						<td data-label="Prezzo">&euro; <fmt:formatNumber value="${item.prodotto.prezzo}" pattern="0.00" /></td>
 						<td data-label="IVA">${item.prodotto.iva}%</td>
-						<td data-label="Totale">&euro; ${item.prodotto.getPrezzoConIva()}</td>
+						<td data-label="Totale">&euro; <fmt:formatNumber value="${item.prodotto.getPrezzoConIva()}" pattern="0.00" /></td>
 						<td data-label="Quantità">
 							<form
 								action="${pageContext.request.contextPath}/carrello/aggiorna"
@@ -43,7 +44,7 @@
 								<button type="submit" class="btn btn-sm">Aggiorna</button>
 							</form>
 						</td>
-						<td data-label="Subtotale">&euro; ${item.prodotto.getPrezzoConIva() * item.quantita}</td>
+						<td data-label="Subtotale">&euro; <fmt:formatNumber value="${item.prodotto.getPrezzoConIva() * item.quantita}" pattern="0.00" /></td>
 						<td>
 							<form
 								action="${pageContext.request.contextPath}/carrello/rimuovi"
@@ -59,7 +60,7 @@
 		</table>
 		<div class="cart-footer">
 			<p class="cart-total">Totale: &euro;
-				${sessionScope.carrello.totale}</p>
+				<fmt:formatNumber value="${sessionScope.carrello.totale}" pattern="0.00" /></p>
 			<form action="${pageContext.request.contextPath}/carrello/checkout"
 				method="post">
 				<button type="submit" class="btn btn-primary btn-lg">Conferma

@@ -283,6 +283,23 @@ img {
 	color: #6b7280;
 }
 
+.price-small {
+	font-size: 0.9rem;
+	color: #000;
+}
+
+.iva-small {
+	font-size: 0.85rem;
+	color: #000;
+}
+
+.price-total {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #059669;
+	margin-top: 0.5rem;
+}
+
 .price-with-iva {
 	font-size: 1.1rem;
 	color: #dc2626;

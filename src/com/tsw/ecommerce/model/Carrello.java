@@ -33,8 +33,9 @@ public class Carrello implements Serializable {
 
     public BigDecimal getTotale() {
         return items.values().stream()
-                .map(i -> i.getProdotto().getPrezzo().multiply(BigDecimal.valueOf(i.getQuantita())))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .map(i -> i.getProdotto().getPrezzoConIva().multiply(BigDecimal.valueOf(i.getQuantita())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, java.math.RoundingMode.HALF_UP);
     }
 
     public static class ItemCarrello implements Serializable {
