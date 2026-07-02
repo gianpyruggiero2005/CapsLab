@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+	// === MOBILE MENU TOGGLE ===
+	const menuToggle = document.querySelector('.menu-toggle');
+	const navLinks = document.querySelector('.nav-links');
+	if (menuToggle && navLinks) {
+	    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+	}
+	
     // === AJAX SEARCH BAR ===
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
